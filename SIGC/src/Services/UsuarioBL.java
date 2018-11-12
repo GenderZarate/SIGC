@@ -201,7 +201,7 @@ public class UsuarioBL {
     public UsuarioBE addUser(UsuarioBE oUsuarioBE) {
 
         //curi y  machaca
-        UsuarioDA oUusuarioDA = new UsuarioDA();
+        UsuarioDA oUsuarioDA = new UsuarioDA();
         String nombre, apepaterno, apematerno, direccion, nrodocumento, telefonomovil;
 
         nombre = (oUsuarioBE.getNombre());
@@ -220,7 +220,7 @@ public class UsuarioBL {
             oUsuarioBE.setIndOpSp(3);
             return oUsuarioBE;
         } else {
-            return oUusuarioDA.addUser(oUsuarioBE);
+            return oUsuarioDA.addUser(oUsuarioBE);
         }
 
     }

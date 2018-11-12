@@ -102,4 +102,74 @@ public class RolBL {
         return rs;
     }
     
-}
+//MODIFICAR
+    
+    public RolBE addRolBE(RolBE oRolBE) {
+          RolDA oRolDA = new RolDA();
+          int id;
+          String nombre, descripcion, estado;
+
+        id  = (oRolBE.getIdrol());
+        nombre = (oRolBE.getNombrerol());
+        descripcion = (oRolBE.get());
+        estado = (oRolBE.get());
+    
+        if (  nombre.equals("")
+                
+                
+                || descripcion.equals("") || estado.equals("")) {
+            
+            oRolBE.setIndOpSp(3);
+            return oRolBE;
+        } else {
+            return oRolDA.addRolBE(oRolBE);
+        }
+    }
+    
+//LISTA    
+        public RolBE listaRolBE(RolBE oRolBE) {
+          RolDA oRolDA = new RolDA();
+          int id;
+          String nombre, descripcion, estado;
+
+        id  = (oRolBE.getIdrol());
+        nombre = (oRolBE.getNombrerol());
+        descripcion = (oRolBE.get());
+        estado = (oRolBE.get());
+    
+        if (  nombre.equals("")
+                || descripcion.equals("") || estado.equals("")) {
+            
+            oRolBE.setIndOpSp(3);
+            return oRolBE;
+        } else {
+            return oRolDA.listaRolBE(oRolBE);
+        }
+        }
+//ACTUALIZAR
+        public RolBE actRolBE(RolBE oRolBE) {
+          RolDA oRolDA = new RolDA();
+          int id;
+          String nombre, descripcion, estado;
+
+        id  = (oRolBE.getIdrol());
+        nombre = (oRolBE.getNombrerol());
+        descripcion = (oRolBE.get());
+        estado = (oRolBE.get());
+    
+        if (  nombre.equals("")
+                || descripcion.equals("") || estado.equals("")) {
+            
+            oRolBE.setIndOpSp(3);
+            return oRolBE;
+        } else {
+            return oRolDA.actRolBE(oRolBE);
+        }
+    }
+    }
+    
+
+
+     
+
+   

@@ -240,4 +240,8 @@ public class RolDA extends BaseDA {
         }
         return rs;
     }
+
+    public RolBE addRolBE(RolBE oRolBE) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
