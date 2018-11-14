@@ -48,7 +48,7 @@ public class RolBE {
 
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
 
     }

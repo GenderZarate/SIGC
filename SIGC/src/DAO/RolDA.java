@@ -1,6 +1,7 @@
 package DAO;
 
 import Beans.RolBE;
+import Beans.UsuarioBE;
 import java.sql.CallableStatement;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,6 +17,8 @@ import java.util.List;
  *
  * @author CESDE Modificado por Herverth
  */
+
+// REALIZADO POR HUAYCHA GALINDO DIEGO KEVIN
 public class RolDA extends BaseDA {
 
     String cadenaConexion;
@@ -133,7 +136,7 @@ public class RolDA extends BaseDA {
             for (RolBE oRolBE : oListaRolBE) {
                 cs = cn.prepareCall("{call uspInsertarRol(?,?,?)}");
                 cs.setString(1, oRolBE.getNombrerol());
-                cs.setBoolean(2, oRolBE.isEstado());
+                cs.setBoolean(2, oRolBE.getEstado());
                 cs.registerOutParameter(3, java.sql.Types.INTEGER);
                 cs.execute();
                 resultado = cs.getInt(3);
@@ -166,7 +169,7 @@ public class RolDA extends BaseDA {
 
             cs = cn.prepareCall("{call uspInsertarRol(?,?,?)}");
             cs.setString(1, oRolBE.getNombrerol());
-            cs.setBoolean(2, oRolBE.isEstado());
+            cs.setBoolean(2, oRolBE.getEstado());
             cs.registerOutParameter(3, java.sql.Types.INTEGER);
             cs.execute();
             resultado = cs.getInt(3);
@@ -199,7 +202,7 @@ public class RolDA extends BaseDA {
             cs = cn.prepareCall("{call uspActualizarRol(?,?,?)}");
             cs.setInt(1, oRolBE.getIdrol());
             cs.setString(2, oRolBE.getNombrerol());
-            cs.setBoolean(3, oRolBE.isEstado());
+            cs.setBoolean(3, oRolBE.getEstado());
             cs.registerOutParameter(3, java.sql.Types.INTEGER);
             cs.executeUpdate();
             resultado = cs.getInt(3);
@@ -280,7 +283,7 @@ public class RolDA extends BaseDA {
         String cadquery = ("insert into "
                 + " rol(nombrerol,estado,descripcion) values ("
                 + " '" + oRolBE.getNombrerol() + "'"
-                + ", '" + oRolBE.isEstado() + "'"
+                + ", '" + oRolBE.getEstado() + "'"
                 + ", '" + oRolBE.getDescripcion() + "');");
 
         int cad = oUtilDAO.ejecutarUpdate(cadquery);
@@ -303,7 +306,7 @@ public class RolDA extends BaseDA {
         try {
             String cadquery = ("update rol "
                     + " set nombrerol = '" + oRolBE.getNombrerol() + "' "
-                    + " ,estado = '" + oRolBE.isEstado() + "' "
+                    + " ,estado = '" + oRolBE.getEstado() + "' "
                     + " ,descripcion = '" + oRolBE.getDescripcion() + "' "
                     + " where idrol= " + oRolBE.getIdrol() + ";");
 
