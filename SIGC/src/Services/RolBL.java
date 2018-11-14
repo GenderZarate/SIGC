@@ -9,9 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RolBL {
-    
-    // REALIZADO POR CURI VEGA FRANZ
 
+    // REALIZADO POR CURI VEGA FRANZ
     public RolBL() {
     }
 
@@ -109,14 +108,14 @@ public class RolBL {
 
     public RolBE addRol(RolBE oRolBE) {
         RolDA oRolDA = new RolDA();
-
+        // extraer los compos para agregar un nuevo bean
         String nombre, descripcion;
         boolean estado;
 
         nombre = (oRolBE.getNombrerol());
         descripcion = (oRolBE.getDescripcion());
         estado = (oRolBE.getEstado());
-
+        //realiza la comparacion para poder agregar 
         if (nombre.equals("")
                 || descripcion.equals("") || nombre.equals("")) {
 
@@ -134,22 +133,23 @@ public class RolBL {
         RolBE oRolBE = new RolBE();
         //se guarda la lista en oListaUsuarioBE
         List<RolBE> oListaRolBE = oRolDA.listarRoles();
-        
+        // extraer los compos para listar los bean
         String nombre, descripcion;
         boolean estado;
-        
+
         nombre = (oRolBE.getNombrerol());
         descripcion = (oRolBE.getDescripcion());
         estado = (oRolBE.getEstado());
-
+        //realiza la comparacion para poder listar los beans
         if (nombre.equals("")
                 || descripcion.equals("") || nombre.equals("")) {
 
-            oRolBE.setIndOpSp(3);
             
-        } 
+            oRolBE.setIndOpSp(3);
 
-        //retornando la lista UsuarioBE
+        }
+
+        //retornando la lista RolBE
         return oListaRolBE;
 
     }
@@ -174,18 +174,22 @@ public class RolBL {
 //        }
 //    }
 //ACTUALIZAR
+    
     public RolBE updateRol(RolBE oRolBE) {
         RolDA oRolDA = new RolDA();
-       
+        // extraer los compos para realizar las modificaciones 
         String nombre, descripcion;
         boolean estado;
+
         nombre = (oRolBE.getNombrerol());
         descripcion = (oRolBE.getDescripcion());
         estado = (oRolBE.getEstado());
-
+        
+        //realiza la comparacion para poder hacer la actualizacion
         if (nombre.equals("")
                 || descripcion.equals("") || nombre.equals("")) {
-
+       
+        // Aqui es donde indica el id 3 cuando se realizo la actualizacion
             oRolBE.setIndOpSp(3);
             return oRolBE;
         } else {
