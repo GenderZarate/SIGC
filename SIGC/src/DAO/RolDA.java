@@ -247,14 +247,14 @@ public class RolDA extends BaseDA {
     public List<RolBE> listarRoles() {
         ArrayList<RolBE> listarRol = new ArrayList<>();
         UtilDAO oUtilDAO = new UtilDAO();
-
+            //se esta ejecutando el  Query para listar 
         oUtilDAO.ejecutarQuery("select * from rol  ");
 
         ResultSet resultados = oUtilDAO.ejecutarQuery("select * from rol  ");
-
+               //se crea el try para ver las fallas
         try {
             while (resultados.next()) {
-
+              //se esta realizando un bucle 
                 RolBE oRolBE = new RolBE();
 
                 int id = resultados.getInt("idrol");
@@ -272,10 +272,10 @@ public class RolDA extends BaseDA {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
+                // retorna los datos del Listado de los Roles
         return listarRol;
     }
-
+  // se esta creando un public para agregar los Roles
     public RolBE addRol(RolBE oRolBE) {
 
         UtilDAO oUtilDAO = new UtilDAO();
@@ -301,7 +301,7 @@ public class RolDA extends BaseDA {
     }
 
     public RolBE updateRol(RolBE oRolBE) {
-
+     //Actualizando los Roles
         UtilDAO oUtilDAO = new UtilDAO();
         try {
             String cadquery = ("update rol "
