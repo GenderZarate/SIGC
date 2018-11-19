@@ -359,17 +359,41 @@ public class UsuarioDA extends BaseDA {
             while (rs.next()) {
                 int idusuario = rs.getInt("idusuario");
                 String nombre = rs.getString("nombre");
-                String apeMaterno = rs.getString("appaterno");
-                String apePaterno = rs.getString("apmaterno");
-                String usuariodb = rs.getString("usuario");
+                String appaterno = rs.getString("appaterno");
+                String apmaterno = rs.getString("apmaterno");
                 String contraseniadb = rs.getString("contrasenia");
+                String usuariodb = rs.getString("usuario");
+                String nrodocumento = rs.getString("nrodocumento");
+                String telefonofijo = rs.getString("telefonofijo");
+                String telefonomovil = rs.getString("telefonomovil");
+                String direccion = rs.getString("Direccion");
+                String email = rs.getString("Email");
+                int idtiposexo = rs.getInt("idtiposexo");
+                boolean estado = rs.getBoolean("estado");
+                boolean inExist = rs.getBoolean("inExist");
+                int idrol = rs.getInt("idrol");
+                String fecha_nacimiento = rs.getString("fecha_nacimiento");
+                String estado_civil = rs.getString("estado_civil");
+                String cuenta_facebook = rs.getString("cuenta_facebook");
 
                 oUsuarioBE.setIdusuario(idusuario);
                 oUsuarioBE.setNombre(nombre);
-                oUsuarioBE.setAppaterno(apePaterno);
-                oUsuarioBE.setApmaterno(apeMaterno);
-                oUsuarioBE.setUsuario(usuariodb);
+                oUsuarioBE.setAppaterno(appaterno);
+                oUsuarioBE.setApmaterno(apmaterno);
                 oUsuarioBE.setContrasenia(contraseniadb);
+                oUsuarioBE.setUsuario(usuariodb);
+                oUsuarioBE.setNrodocumento(nrodocumento);
+                oUsuarioBE.setTelefonofijo(telefonofijo);
+                oUsuarioBE.setTelefonomovil(telefonomovil);
+                oUsuarioBE.setDireccion(direccion);
+                oUsuarioBE.setEmail(email);
+                oUsuarioBE.setIdtiposexo(idtiposexo);
+                oUsuarioBE.setEstado(estado);
+                oUsuarioBE.setInExist(inExist);
+                oUsuarioBE.setIdrol(idrol);
+                oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
+                oUsuarioBE.setEstado_civil(estado_civil);
+                oUsuarioBE.setCuenta_facebook(cuenta_facebook);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -462,8 +486,8 @@ public class UsuarioDA extends BaseDA {
 
                 int idusuario = rs.getInt("idusuario");
                 String nombre = rs.getString("nombre");
-                String apeMaterno = rs.getString("appaterno");
-                String apePaterno = rs.getString("apmaterno");
+                String appaterno = rs.getString("appaterno");
+                String apmaterno = rs.getString("apmaterno");
                 String contrasenia = rs.getString("contrasenia");
                 String usuario = rs.getString("usuario");
                 String nrodocumento = rs.getString("nrodocumento");
@@ -481,8 +505,8 @@ public class UsuarioDA extends BaseDA {
 
                 oUsuarioBE.setIdusuario(idusuario);
                 oUsuarioBE.setNombre(nombre);
-                oUsuarioBE.setAppaterno(apePaterno);
-                oUsuarioBE.setApmaterno(apeMaterno);
+                oUsuarioBE.setAppaterno(appaterno);
+                oUsuarioBE.setApmaterno(apmaterno);
                 oUsuarioBE.setContrasenia(contrasenia);
                 oUsuarioBE.setUsuario(usuario);
                 oUsuarioBE.setNrodocumento(nrodocumento);
@@ -497,6 +521,8 @@ public class UsuarioDA extends BaseDA {
                 oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
                 oUsuarioBE.setEstado_civil(estado_civil);
                 oUsuarioBE.setCuenta_facebook(cuenta_facebook);
+                
+                contador++;
 
                 //al ingrsar el contador suma en uno 
             }
@@ -667,20 +693,17 @@ public class UsuarioDA extends BaseDA {
     }
 
     public List<UsuarioBE> findUsuarioByNombre(String nombre) {
-        
-        // roca
-        // Buscando a usuario por NOMBRE
-        int contador = 0;
-
+        //generando busqueda por nombre y obteniendo en una lista
         List<UsuarioBE> listaUsuarios = new ArrayList<>();
         
         try {
+            //busqueda por nombre en la base de datos
             String cad = "select * from usuario where usuario.nombre like '%"+nombre+"%';";
-
+            //creando instacia
             RolBL oRolBL = new RolBL();
             ResultSet rs = oRolBL.listarRS(cad);
             System.out.println(cad);
-
+            //extrayendo los datos
             while (rs.next()) {
 
                 int idusuario = rs.getInt("idusuario");
@@ -722,34 +745,35 @@ public class UsuarioDA extends BaseDA {
                 oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
                 oUsuarioBE.setEstado_civil(estado_civil);
                 oUsuarioBE.setCuenta_facebook(cuenta_facebook);
-
+                
+                
+                //la lista usuario esta agregando a la iinstacia oUsuarioBE
                 listaUsuarios.add(oUsuarioBE);
                 
-                //al ingrsar el contador suma en uno 
             }
 
         } catch (Exception e) {
-            //sea el caso que haiga un error retornara nulo
+            //sea el caso que no exista retornara nulo
             System.out.println(e.getMessage());
             listaUsuarios = null;
         }
-        
+        //retornado la lista
         return listaUsuarios;
     
     }
 
     public List<UsuarioBE> findUsuarioByAppaterno(String Appaterno) {
-        int contador = 0;
-
+        //generando busqueda por apellido paterno y obteniendo en una lista
         List<UsuarioBE> listaUsuarios = new ArrayList<>();
         
         try {
+             //busqueda por nombre en la base de datos
             String cad = "select * from usuario where usuario.appaterno like '%"+Appaterno+"%';";
-
+            //creando instacia
             RolBL oRolBL = new RolBL();
             ResultSet rs = oRolBL.listarRS(cad);
             System.out.println(cad);
-
+            //extrayendo los datos
             while (rs.next()) {
 
                 int idusuario = rs.getInt("idusuario");
@@ -792,9 +816,9 @@ public class UsuarioDA extends BaseDA {
                 oUsuarioBE.setEstado_civil(estado_civil);
                 oUsuarioBE.setCuenta_facebook(cuenta_facebook);
 
+                //la lista usuario esta agregando a la iinstacia oUsuarioBE
                 listaUsuarios.add(oUsuarioBE);
-                
-                //al ingrsar el contador suma en uno 
+               
             }
 
         } catch (Exception e) {
@@ -802,22 +826,22 @@ public class UsuarioDA extends BaseDA {
             System.out.println(e.getMessage());
             listaUsuarios = null;
         }
-        
+        //retornado la lista
         return listaUsuarios;
     }
 
     public List<UsuarioBE> findUsuarioByNrodocumento(String nrodocumento) {
-        int contador = 0;
-
+       
         List<UsuarioBE> listaUsuarios = new ArrayList<>();
         
         try {
+            //busqueda por nombre en la base de datos
             String cad = "select * from usuario where usuario.nrodocumento like '%"+nrodocumento+"%';";
-
+            //creando instacia
             RolBL oRolBL = new RolBL();
             ResultSet rs = oRolBL.listarRS(cad);
             System.out.println(cad);
-
+            //extrayendo los datos
             while (rs.next()) {
 
                 int idusuario = rs.getInt("idusuario");
@@ -861,8 +885,7 @@ public class UsuarioDA extends BaseDA {
                 oUsuarioBE.setCuenta_facebook(cuenta_facebook);
 
                 listaUsuarios.add(oUsuarioBE);
-                
-                //al ingrsar el contador suma en uno 
+                 
             }
 
         } catch (Exception e) {
@@ -870,22 +893,21 @@ public class UsuarioDA extends BaseDA {
             System.out.println(e.getMessage());
             listaUsuarios = null;
         }
-        
+        //retornado la lista
         return listaUsuarios;
     }
 
     public UsuarioBE findUsuarioByIdusuario(int idusuario) {
-       int contador = 0;
- 
+        //generando busqueda por nombre y obteniendo en una lista
         UsuarioBE oUsuarioBE = new UsuarioBE();
         
         try {
             String cad = "select * from usuario where usuario.idusuario = "+idusuario+";";
-
+            //creando instacia
             RolBL oRolBL = new RolBL();
             ResultSet rs = oRolBL.listarRS(cad);
             System.out.println(cad);
-
+            //extrayendo los datos
             while (rs.next()) {
 
                 int idusuario1 = rs.getInt("idusuario");
@@ -927,8 +949,7 @@ public class UsuarioDA extends BaseDA {
                 oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
                 oUsuarioBE.setEstado_civil(estado_civil);
                 oUsuarioBE.setCuenta_facebook(cuenta_facebook);
-
-                //al ingrsar el contador suma en uno 
+ 
             }
 
         } catch (Exception e) {
@@ -936,7 +957,7 @@ public class UsuarioDA extends BaseDA {
             System.out.println(e.getMessage());
             oUsuarioBE = null;
         }
-        
+        //retornado la lista
         return oUsuarioBE; 
     }
     
@@ -971,14 +992,5 @@ public class UsuarioDA extends BaseDA {
         return oUsuarioBE;
     }
 
-    //---------------------------------------------------------------
-
-    
-    
-    
-    
-    
-    
-    
     
 }
